@@ -1,50 +1,61 @@
 .hoverthing {
+    /*stay constant*/
     font-size:3em;
-    margin-top:0px;
-    margin-bottom:0px;
-    --firstSpeed:250ms;
-    --letterDelay:40ms;
-    --secondSpeed:300ms;
+    --firstSpeed:350ms; --letterDelay:40ms; --secondSpeed:300ms;
+    left:0; top:0; margin:0;overflow:hidden; height:3.5em;/*positioning and rendering*/
+    /*disable selecting with cases for IE and Safari*/
+    user-select: none; -ms-user-select: none; -webkit-user-select: none;
 
-    width:2em;
-    height:1.5em;
-    overflow:hidden;
-    position:relative;
-    left:0;
-    top:0;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    /*change on hover*/
+    width: 5.25em;
+    
 }
 .hoverthing:hover {
-    width: 5.5em;
-    height:3.5em;
     transition:all var(--firstSpeed) ease-in-out;
 }
 
 .hoverthing > .letter-initial:nth-child(1) {
-    transform:translate(0.15em,0em);
+    transform:translate(0.15em,1em);
 }
 .hoverthing > .letter-initial:nth-child(2) {
-    transform:translate(0.75em,-1.5em);
-}
-.hoverthing:hover > .letter-initial:nth-child(2) {
-    transform:translate(0.15em,-0.5em);
-    transition:transform var(--firstSpeed) ease-in-out;
+    transform:translate(0.75em,-0.5em);
 }
 .hoverthing > .letter-initial:nth-child(3) {
-    transform:translate(1.35em,-3em);
+    transform:translate(1.35em,-2em);
+}
+
+
+@keyframes firstInitial{
+    from {transform:translate(0.15em,1em);}
+    to   {transform:translate(0.15em,0em);}
+}
+@keyframes secondInitial{
+    from {transform:translate(0.75em,-0.5em);}
+    to   {transform:translate(0.15em,-0.5em);}
+}
+@keyframes thirdInitial{
+    from {transform:translate(1.35em,-2em);}
+    to   {transform:translate(0.15em,-1em);}
+}
+.hoverthing:hover > .letter-initial {
+    animation-duration: var(--firstSpeed);
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) {
+    animation-name: firstInitial;
+}
+.hoverthing:hover > .letter-initial:nth-child(2) {
+    animation-name: secondInitial;
 }
 .hoverthing:hover > .letter-initial:nth-child(3) {
-    transform:translate(0.15em,-1em);
-    transition:transform var(--firstSpeed) ease-in-out;
+    animation-name: thirdInitial;
 }
 
 
 
 @keyframes toN{
     from {transform:translateX(-3em);}
-    to {transform:translateX(var(--N));}
+    to   {transform:translateX(var(--N));}
 }
 .hoverthing > .letter-initial > .letter-side {
     display:inline;
