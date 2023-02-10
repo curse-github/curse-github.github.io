@@ -1,0 +1,196 @@
+.hoverthing {
+    font-size:6em;
+    width:calc(var(--left) + 2em);
+    height:1.5em;
+    overflow:hidden;
+}
+.hoverthing:hover {
+    width: 5.5em;
+    height:3.5em;
+}
+
+.hoverthing > .letter-initial:nth-child(1) {
+    transform:translate(0.25em,0em);
+}
+
+.hoverthing > .letter-initial:nth-child(2) {
+    transform:translate(0.85em,-1.5em);
+}
+.hoverthing:hover > .letter-initial:nth-child(2) {
+    transform:translate(0.25em,-0.5em);
+    transition:transform 200ms ease-in-out;
+}
+
+.hoverthing > .letter-initial:nth-child(3) {
+    transform:translate(1.45em,-3em);
+}
+.hoverthing:hover > .letter-initial:nth-child(3) {
+    transform:translate(0.25em,-1em);
+    transition:transform 200ms ease-in-out;
+}
+
+
+
+.hoverthing > .letter-initial > .letter-side {
+    display:inline;
+    position:absolute;
+    transform:translate(-5em)
+}
+
+
+
+
+
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(1) {
+    animation-name:toZero;
+    animation-duration:200ms;
+    animation-delay:220ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(2) {
+    animation-name:toPointSix;
+    animation-duration:200ms;
+    animation-delay:240ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(3) {
+    animation-name:toOnePointFive;
+    animation-duration:200ms;
+    animation-delay:260ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(4) {
+    animation-name:toTwoPointOne;
+    animation-duration:200ms;
+    animation-delay:280ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(5) {
+    animation-name:toTwoPointSeven;
+    animation-duration:200ms;
+    animation-delay:300ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(6) {
+    animation-name:toThreePointTwo;
+    animation-duration:200ms;
+    animation-delay:320ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(7) {
+    animation-name:toThreePointSeven;
+    animation-duration:200ms;
+    animation-delay:340ms;
+    animation-fill-mode: forwards;
+}
+
+
+
+
+
+.hoverthing:hover > .letter-initial:nth-child(2) > .letter-side:nth-child(1) {
+    animation-name:toZero;
+    animation-duration:200ms;
+    animation-delay:220ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(2) > .letter-side:nth-child(2) {
+    animation-name:toPointSix;
+    animation-duration:200ms;
+    animation-delay:240ms;
+    animation-fill-mode: forwards;
+}
+
+
+
+
+
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(1) {
+    animation-name:toZero;
+    animation-duration:200ms;
+    animation-delay:220ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(2) {
+    animation-name:toPointThree;
+    animation-duration:200ms;
+    animation-delay:240ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(3) {
+    animation-name:toOnePointTwo;
+    animation-duration:200ms;
+    animation-delay:260ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(4) {
+    animation-name:toOnePointSevenFive;
+    animation-duration:200ms;
+    animation-delay:280ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(5) {
+    animation-name:toTwoPointThree;
+    animation-duration:200ms;
+    animation-delay:300ms;
+    animation-fill-mode: forwards;
+}
+.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(6) {
+    animation-name:toThree;
+    animation-duration:200ms;
+    animation-delay:320ms;
+    animation-fill-mode: forwards;
+}
+
+
+
+
+
+@keyframes toZero{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(0em);}
+}
+@keyframes toPointThree{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(0.3em);}
+}
+@keyframes toPointSix{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(0.6em);}
+}
+@keyframes toOnePointTwo{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(1.2em);}
+}
+@keyframes toOnePointFive{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(1.5em);}
+}
+@keyframes toOnePointSevenFive{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(1.75em);}
+}
+@keyframes toTwoPointOne{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(2.1em);}
+}
+@keyframes toTwoPointThree{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(2.3em);}
+}
+@keyframes toTwoPointSeven{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(2.7em);}
+}
+@keyframes toThree{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(3em);}
+}
+@keyframes toThreePointTwo{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(3.2em);}
+}
+@keyframes toThreePointSeven{
+    from {transform:translateX(-2em);}
+    to {transform:translateX(3.7em);}
+}
