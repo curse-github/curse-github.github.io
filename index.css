@@ -1,12 +1,13 @@
 html {
-    background-color:#2d2d2d;
+    /*--bs-body-bg:#212529 !important;*/  /*old body bg color*/
+    --bs-body-bg:#222528 !important;
+    /*--bs-secondary-bg:#343a40 !important;*/  /*old secondary bg color*/
+    --bs-secondary-bg:#1a1d20 !important;
 }
 .myNavbar {
-    background-color:#232323;
+    background-color:var(--bs-secondary-bg);
     display:block;
     width:100%;
     height:10.5em;
     color:white;
-    margin:0;
-    padding:0;
 }
