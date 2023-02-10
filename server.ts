@@ -12,6 +12,7 @@ var pages:{[key:string]:any} = {
     "/index.html":(req:any, res:any, send:any) => {send();},
     "/index.css":(req:any, res:any, send:any) => {send();},
     "/index.js":(req:any, res:any, send:any) => {send();},
+    "/letterAnim.css":(req:any, res:any, send:any) => {send();}
 }
 Object.keys(pages).forEach((i) => {
     app.get(i, (req:any, res:any) => {

@@ -1,87 +1,11 @@
-.hoverthing {
-    font-size:6em;
-    --firstSpeed:250ms;
-    --letterDelay:80ms;
-    --secondSpeed:400ms;
-
-    width:2em;
-    height:1.5em;
-    overflow:hidden;
-    position:relative;
+html {
+    background-color:#2d2d2d;
 }
-.hoverthing:hover {
-    width: 5.5em;
-    height:3.5em;
-    transition:all var(--firstSpeed) ease-in-out;
+.navbar {
+    background-color:#232323;
+    width:100%;
+    height:11em;
+    color:white;
+    margin:0;
+    padding:0;
 }
-
-.hoverthing > .letter-initial:nth-child(1) {
-    transform:translate(0.15em,0em);
-}
-.hoverthing > .letter-initial:nth-child(2) {
-    transform:translate(0.75em,-1.5em);
-}
-.hoverthing:hover > .letter-initial:nth-child(2) {
-    transform:translate(0.15em,-0.5em);
-    transition:transform var(--firstSpeed) ease-in-out;
-}
-.hoverthing > .letter-initial:nth-child(3) {
-    transform:translate(1.35em,-3em);
-}
-.hoverthing:hover > .letter-initial:nth-child(3) {
-    transform:translate(0.15em,-1em);
-    transition:transform var(--firstSpeed) ease-in-out;
-}
-
-
-
-@keyframes toN{
-    from {transform:translateX(-3em);}
-    to {transform:translateX(var(--N));}
-}
-.hoverthing > .letter-initial > .letter-side {
-    display:inline;
-    position:fixed;
-    transform:translate(-3em)
-}
-.hoverthing:hover > .letter-initial > .letter-side {
-    animation-name:toN;
-    animation-duration:var(--secondSpeed);
-    animation-fill-mode: forwards;
-}
-
-
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(1) {
-    /*A*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0em;    }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(2) {
-    /*M*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0.6em;  }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(3) {
-    /*P*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 3)); --N:1.5em;  }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(4) {
-    /*B*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 4)); --N:2.1em;  }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(5) {
-    /*E*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 5)); --N:2.7em;  }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(6) {
-    /*L*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 6)); --N:3.2em;  }
-.hoverthing:hover > .letter-initial:nth-child(1) > .letter-side:nth-child(7) {
-    /*L*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 7)); --N:3.7em;  }
-
-
-.hoverthing:hover > .letter-initial:nth-child(2) > .letter-side:nth-child(1) {
-    /*A*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0em;    }
-.hoverthing:hover > .letter-initial:nth-child(2) > .letter-side:nth-child(2) {
-    /*Y*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0.6em;  }
-
-
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(1) {
-    /*I*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0em;    }
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(2) {
-    /*M*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0.3em;  }
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(3) {
-    /*P*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 3)); --N:1.2em;  }
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(4) {
-    /*S*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 4)); --N:1.75em; }
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(5) {
-    /*O*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 5)); --N:2.3em;  }
-.hoverthing:hover > .letter-initial:nth-child(3) > .letter-side:nth-child(6) {
-    /*N*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 6)); --N:3em;    }
