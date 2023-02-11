@@ -7,13 +7,15 @@
         <meta name="author" content="Curse">
         <!--<script src="index.js"></script>-->
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="letterAnim.css">
+        <link rel="stylesheet" href="letterAnimOpen.css">
+        <link rel="stylesheet" href="githubCards.css">
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <title>Campbell Simpson Portfolio</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="index.js"></script>
     </head>
     <body>
-        <div class="myNavbar d-flex">
+        <navbar>
             <letterContainer>
                 <div class="letter letter-initial">
                                                     C
@@ -40,9 +42,32 @@
                     <div class="letter letter-side">N</div>
                 </div>
             </letterContainer>
-            <div style="font-size: 3em;">
-                Text after
-            </div>
+            <right style="font-size: 3em;">
+                <!--Text right-->
+            </right>
+        </navbar>
+        <div id="cardList">
         </div>
+        
+        <!--
+            <card>
+                <header>
+                    <a target="_blank" href="https://github.com/curse-github/Gravity-Game" style="text-decoration: none;">Gravity Game</a> 
+                </header>
+                <inner>
+                    <img src="https://raw.githubusercontent.com/curse-github/Gravity-Game/master/Preview.png" alt="github-logo.png">
+                </inner>
+                <footer>
+                    <input type="button" onclick="
+                        var parent = this.parentNode.parentNode;
+                        parent.setAttribute('show',parent.getAttribute('show') != 'true');
+                        this.value = ((this.value == 'v') ? '^' : 'v');
+                    " value="v">
+                    <hide>
+                        This is a game I am developing for the Game design course at the Francis Tuttle danforth campus in Edmond oklahoma.
+                    </hide>
+                </footer>
+            </card>
+        -->
     </body>
 </html>

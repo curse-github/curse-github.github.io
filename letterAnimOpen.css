@@ -1,0 +1,80 @@
+letterContainer {
+    /*stay constant*/
+    --startDelay:200ms;
+    --firstSpeed:350ms;
+    --letterDelay:40ms;
+    --secondSpeed:300ms;
+
+    font-size:3em;
+    left:0; top:0; margin:0;overflow:hidden; height:3.5em; display:block;/*positioning and rendering*/
+    /*disable selecting with cases for IE and Safari*/
+    user-select: none; -ms-user-select: none; -webkit-user-select: none;
+    width: 6.55em;
+}
+
+@keyframes firstInitial {
+    from {transform:translate(0.15em,1em);}
+    to   {transform:translate(0.15em,0em);} }
+@keyframes secondInitial {
+    from {transform:translate(0.75em,-0.5em);}
+    to   {transform:translate(0.15em,-0.5em);} }
+@keyframes thirdInitial {
+    from {transform:translate(1.35em,-2em);}
+    to   {transform:translate(0.15em,-1em);} }
+letterContainer > .letter-initial {
+    animation-duration: var(--firstSpeed);
+    animation-fill-mode: forwards;
+}
+letterContainer > .letter-initial:nth-child(1) { animation-name: firstInitial; }
+letterContainer > .letter-initial:nth-child(2) { animation-name: secondInitial; }
+letterContainer > .letter-initial:nth-child(3) { animation-name: thirdInitial; }
+
+
+
+@keyframes toN {
+    from {transform:translateX(-3em);}
+    to   {transform:translateX(var(--N));}
+}
+letterContainer > .letter-initial > .letter-side {
+    display:inline;
+    position:fixed;
+    transform:translateX(-3em);
+
+    animation-name:toN;
+    animation-duration:var(--secondSpeed);
+    animation-fill-mode: forwards;
+}
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(1) {
+    /*A*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0em;    }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(2) {
+    /*M*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0.6em;  }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(3) {
+    /*P*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 3)); --N:1.5em;  }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(4) {
+    /*B*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 4)); --N:2.1em;  }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(5) {
+    /*E*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 5)); --N:2.7em;  }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(6) {
+    /*L*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 6)); --N:3.2em;  }
+letterContainer > .letter-initial:nth-child(1) > .letter-side:nth-child(7) {
+    /*L*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 7)); --N:3.7em;  }
+
+
+letterContainer > .letter-initial:nth-child(2) > .letter-side:nth-child(1) {
+    /*A*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0em;    }
+letterContainer > .letter-initial:nth-child(2) > .letter-side:nth-child(2) {
+    /*Y*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0.6em;  }
+
+
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(1) {
+    /*I*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 1)); --N:0em;    }
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(2) {
+    /*M*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 2)); --N:0.3em;  }
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(3) {
+    /*P*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 3)); --N:1.2em;  }
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(4) {
+    /*S*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 4)); --N:1.75em; }
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(5) {
+    /*O*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 5)); --N:2.3em;  }
+letterContainer > .letter-initial:nth-child(3) > .letter-side:nth-child(6) {
+    /*N*/animation-delay:calc(var(--firstSpeed) + calc(var(--letterDelay) * 6)); --N:3em;    }
