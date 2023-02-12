@@ -3,7 +3,6 @@
     display: flex;
     flex-flow:row wrap
 }
-
 card {
     background-color:var(--bs-dark-border-subtle);
     display:flex;
@@ -23,20 +22,20 @@ card > inner {
     background-color: var(--bs-secondary-bg);
     display:flex;
     flex-direction: column;
-    align-items:center;
+    justify-content:center;
     width:100%;
 }
-card > inner > * {
+card > inner > img {
     width:23em;
     margin-top:1em;
     margin-bottom:1em;
+    aspect-ratio: 16/9;
 }
 
 card > footer {
     display: flex;
-    justify-content: right;
     flex-direction: column;
-    align-items: right;
+    justify-content: right;
     width:90%;
     margin-top:0.75em;
     margin-bottom:1.5em;
@@ -57,4 +56,21 @@ card > footer > input[type="button"] {
 }
 card[show="true"] > footer > hide {
     max-height:1000px;
+}
+@media screen and (max-width: 54em) {
+    card {
+        width:90%;
+        margin-left:0em;
+        margin-right:0em;
+    }
+    .cardParent {
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+    }
+    card > inner {
+        align-items:center;
+        justify-content: center;
+    }
 }

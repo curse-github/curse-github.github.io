@@ -24,7 +24,7 @@ function append(parent,type,content,attributes) {
 async function run() {
     var json = await fetchJsonPromise("https://api.github.com/users/curse-github/repos");
     for(var i = 0; i < json.length; i++) {
-        var card = append(document.getElementById("cardList"),"card","",{});
+        var card = append(append(document.getElementById("cardList"),"div","",{class:"cardParent"}),"card","",{});
         
         var header = append(card,"header","",{});
         append(header,"a",json[i].name,{

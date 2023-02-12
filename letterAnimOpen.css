@@ -33,13 +33,13 @@ letterContainer > .letter-initial:nth-child(3) { animation-name: thirdInitial; }
 
 
 @keyframes toN {
-    from {transform:translateX(-3em);}
+    from {transform:translateX(-5em);}
     to   {transform:translateX(var(--N));}
 }
 letterContainer > .letter-initial > .letter-side {
     display:inline;
     position:fixed;
-    transform:translateX(-3em);
+    transform:translateX(-5em);
 
     animation-name:toN;
     animation-duration:var(--secondSpeed);

@@ -12,7 +12,7 @@ letterContainer {
     width: 3em;/*change on hover*/
 }
 letterContainer:hover {
-    width: 6.55em;
+    width: 7em;
     transition:all var(--firstSpeed) ease-in-out;
 }
 
