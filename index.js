@@ -20,7 +20,7 @@ function append(parent,type,content,attributes) {
 	parent.appendChild(thing);
 	return thing;
 }
-
+//#region github cards
 async function run() {
     var json = await fetchJsonPromise("https://api.github.com/users/curse-github/repos");
     for(var i = 0; i < json.length; i++) {
@@ -49,3 +49,14 @@ async function run() {
     }
 }
 run();
+//#endregion
+
+//#region letter animation
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) { document.querySelector("letterContainer").setAttribute("animate",true ); }
+        else {                      document.querySelector("letterContainer").setAttribute("animate",false); }
+    });
+});
+setTimeout(() => {  observer.observe(document.querySelector("navbar"));  }, 100);
+//#endregion

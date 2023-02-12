@@ -1,7 +1,7 @@
 #cardList {
-    width:100%;
     display: flex;
-    flex-flow:row wrap
+    flex-flow:row wrap;
+    margin:0.75em;
 }
 card {
     background-color:var(--bs-dark-border-subtle);
@@ -10,8 +10,7 @@ card {
     align-items:center;
     width:25em;
     border-radius: 2em;
-    margin-left:1.5em;
-    margin-top:1.5em;
+    margin:0.75em;
 }
 card > header {
     margin-top:0.25em;
@@ -28,14 +27,15 @@ card > inner {
 card > inner > img {
     width:23em;
     margin-top:1em;
+    margin-right:1em;
     margin-bottom:1em;
+    margin-left:1em;
     aspect-ratio: 16/9;
 }
 
 card > footer {
     display: flex;
     flex-direction: column;
-    justify-content: right;
     width:90%;
     margin-top:0.75em;
     margin-bottom:1.5em;
@@ -57,20 +57,24 @@ card > footer > input[type="button"] {
 card[show="true"] > footer > hide {
     max-height:1000px;
 }
-@media screen and (max-width: 54em) {
+@media screen and (max-width: 55.5em) {
     card {
-        width:90%;
-        margin-left:0em;
-        margin-right:0em;
+        width:100%;
+        margin:0;
     }
     .cardParent {
         width:100%;
-        display:flex;
-        align-items:center;
+        margin:0.75em;
+    }
+    #cardList {
+        margin:0.75em;
         justify-content: center;
     }
     card > inner {
         align-items:center;
         justify-content: center;
+    }
+    card > inner > img {
+        width:calc(100% - 2em);
     }
 }
