@@ -6,10 +6,14 @@ html {
     /*--bs-dark-border-subtle:#343a40 !important;*/  /*old dark border color*/
     --bs-dark-border-subtle:#131618 !important;
 }
+body {
+    height:100vh;
+    width:100vw;
+}
 navbar {
     background-color:var(--bs-secondary-bg);
     display:flex;
-    width:100%;
+    width:100vw;
     height:calc(3em * 3.5em);
     color:white;
 }
