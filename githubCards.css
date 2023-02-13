@@ -29,7 +29,11 @@ cardParent {
     
     user-select: none; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;/* keep user from selecting image */
 }
-.gitCard > inner > img[alt="true"] { width:12.9em; aspect-ratio: 1; }
+.gitCard > inner > img[alt="true"] {
+    width:12.9em; aspect-ratio: 1;
+    filter:invert();
+}
+.gitCard > inner > img[alt="pfPic"] {width:12.9em; aspect-ratio: 1; }
 
 .gitCard > footer {
     width:90%;

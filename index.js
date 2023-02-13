@@ -70,7 +70,7 @@ async function run() {
         description: json.bio
     };
     var cardElement = appendCard(card.parent,card.name,card.html_url,card.imagelink,card.hpLink,card.description);
-    cardElement.children[1].children[0].setAttribute("alt",true);
+    cardElement.children[1].children[0].setAttribute("alt","pfPic");
     json = null;
 
     json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
