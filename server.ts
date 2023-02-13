@@ -11,7 +11,8 @@ var pages:{[key:string]:any} = {
     "/githubCards.css":(req:any, res:any, send:any) => {send();},
 
     "/favicon.ico":(req:any, res:any, send:any) => {send();},
-    "/github-logo.png":(req:any, res:any, send:any) => {send();}
+    "/github-logo.png":(req:any, res:any, send:any) => {send();},
+    "/link.png":(req:any, res:any, send:any) => {send();}
 }
 Object.keys(pages).forEach((i) => {
     app.get(i, (req:any, res:any) => {

@@ -41,8 +41,25 @@ card > footer {
     overflow: hidden;
 
     font-size:1.125em;
+    display: flex;
+    flex-direction:column;
 }
 card[show="true"] > footer { max-height:1000px; margin-bottom:1.75em; }
+
+
+card > footer > a.link-homepage {
+    color:#58a6ff; text-decoration: none;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+card > footer > a.link-homepage:hover { color:#58a6ff; text-decoration:underline; }
+card > footer > a > img.link-homepage {
+    width:1em;
+    height:1em;
+    filter:invert();
+}
 
 
 @media screen and (max-width: 55.5em) {

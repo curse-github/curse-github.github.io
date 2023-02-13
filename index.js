@@ -31,7 +31,7 @@ async function run() {
         var card = append(cardlist,"card","",{});
         
         var header = append(card,"header","",{});
-        append(header,"a",json[i].name,{
+        append(header,"a",json[i].name.split("-").join(" ").replace("curse github","curse-github"),{
             target:"_blank",
             href:json[i].html_url,
             style:"text-decoration: none;"
@@ -44,7 +44,17 @@ async function run() {
             draggable:"false"
         });
         
-        var footer = append(card,"footer","\"" + json[i].description + "\"",{});
+        var footer = append(card,"footer","",{});
+        if (json[i].homepage != null && json[i].homepage != "") {
+            var link = append(footer,"a","",{
+                class:"link-homepage",
+                href:json[i].homepage
+            }); append(link,"img","",{
+                class:"link-homepage",
+                src:"link.png", draggable:"false"
+            }); link.innerHTML += json[i].homepage.replace("https://","");
+        }
+        append(footer,"div","\"" + json[i].description + "\"",{});
     }
 }
 run();
