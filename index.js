@@ -20,44 +20,73 @@ function append(parent,type,content,attributes) {
 	parent.appendChild(thing);
 	return thing;
 }
+function appendCard(parent, name, html_url, imagelink, hpLink, description) {
+    var card = append(parent,"div","",{
+        class:"gitCard",
+        onclick:"this.setAttribute('show',this.getAttribute('show') != 'true');"
+    });
+    
+    var header = append(card,"header","",{});
+    append(header,"a",name,{
+        target:"_blank",
+        href:html_url,
+        style:"text-decoration: none;"
+    });
+
+    var inner  = append(card,"inner" ,"",{});
+    append(inner,"img","",{
+        src:imagelink,
+        onerror:"setAltImg(this);",
+        draggable:"false"
+    });
+    
+    var footer = append(card,"footer","",{});
+    if (hpLink != null && hpLink != "") {
+        var link = append(footer,"a","",{
+            class:"link-homepage",
+            href:hpLink
+        }); append(link,"img","",{
+            class:"link-homepage",
+            src:"link.png", draggable:"false"
+        }); link.innerHTML += hpLink.replace("https://","");
+    }
+    append(footer,"div",((description != null && description != "") ? "\"" + description + "\"" : ""),{});
+    return card;
+
+}
 //#region github cards
 async function run() {
-    var json = await fetchJsonPromise("https://api.github.com/users/curse-github/repos");
-    for(var i = 0; i < json.length; i++) {
-        var cardParent = append(document.getElementById("cardList"),"cardParent","",{})
-        var card = append(cardParent,"div","",{
-            class:"gitCard",
-            onclick:"this.setAttribute('show',this.getAttribute('show') != 'true');"
-        });
-        
-        var header = append(card,"header","",{});
-        append(header,"a",json[i].name.split("-").join(" ").replace("curse github","curse-github"),{
-            target:"_blank",
-            href:json[i].html_url,
-            style:"text-decoration: none;"
-        });
+    const USER = "curse-github";
+    const cardList = document.querySelector("#cardList");
+    
+    var cardParent = append(cardList,"cardParent","",{});
+    var json = await fetchJsonPromise("https://api.github.com/users/" + USER);
+    var card = {
+        parent: cardParent,
+        name: json.name,
+        html_ur: json.html_url,
+        imagelink: json.avatar_url,
+        hpLink: json.blog,
+        description: json.bio
+    };
+    var cardElement = appendCard(card.parent,card.name,card.html_url,card.imagelink,card.hpLink,card.description);
+    cardElement.children[1].children[0].setAttribute("alt",true);
+    json = null;
 
-        var inner  = append(card,"inner" ,"",{});
-        append(inner,"img","",{
-            src:"https://raw.githubusercontent.com/" + json[i].full_name + "/" + json[i].default_branch + "/Preview.png",
-            onerror:"setAltImg(this);",
-            draggable:"false"
-        });
-        
-        var footer = append(card,"footer","",{});
-        if (json[i].homepage != null && json[i].homepage != "") {
-            var link = append(footer,"a","",{
-                class:"link-homepage",
-                href:json[i].homepage
-            }); append(link,"img","",{
-                class:"link-homepage",
-                src:"link.png", draggable:"false"
-            }); link.innerHTML += json[i].homepage.replace("https://","");
-        }
-        append(footer,"div","\"" + json[i].description + "\"",{});
+    json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
+    for(var i = 0; i < json.length; i++) {
+        var cardParent = append(cardList,"cardParent","",{});
+        var card = {
+            parent: cardParent,
+            name: json[i].name.split("-").join(" ").replace("curse github","curse-github"),
+            html_ur: json[i].html_url,
+            imagelink: "https://raw.githubusercontent.com/" + json[i].full_name + "/" + json[i].default_branch + "/Preview.png",
+            hpLink: json[i].homepage,
+            description: json[i].description
+        };
+        appendCard(card.parent,card.name,card.html_url,card.imagelink,card.hpLink,card.description);
     }
 }
-run();
 function setAltImg(element) {
     element.src = "/github-logo.png"
     element.setAttribute("alt",true);
@@ -71,5 +100,8 @@ const observer = new IntersectionObserver(entries => {
         else {                      document.querySelector("letterContainer").setAttribute("animate",false); }
     });
 });
-setTimeout(() => {  observer.observe(document.querySelector("navbar"));  }, 100);
 //#endregion
+window.onload = () => {
+    run();
+    observer.observe(document.querySelector("navbar"));
+}
