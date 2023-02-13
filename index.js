@@ -64,7 +64,7 @@ async function run() {
     var card = {
         parent: cardParent,
         name: json.name,
-        html_ur: json.html_url,
+        html_url: json.html_url,
         imagelink: json.avatar_url,
         hpLink: json.blog,
         description: json.bio
