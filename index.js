@@ -79,7 +79,7 @@ async function run() {
         var card = {
             parent: cardParent,
             name: json[i].name.split("-").join(" ").replace("curse github","curse-github"),
-            html_ur: json[i].html_url,
+            html_url: json[i].html_url,
             imagelink: "https://raw.githubusercontent.com/" + json[i].full_name + "/" + json[i].default_branch + "/Preview.png",
             hpLink: json[i].homepage,
             description: json[i].description
