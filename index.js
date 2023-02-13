@@ -24,7 +24,11 @@ function append(parent,type,content,attributes) {
 async function run() {
     var json = await fetchJsonPromise("https://api.github.com/users/curse-github/repos");
     for(var i = 0; i < json.length; i++) {
-        var card = append(append(document.getElementById("cardList"),"div","",{class:"cardParent"}),"card","",{});
+        var cardlist = append(document.getElementById("cardList"),"div","",{
+            class:"cardParent",
+            onclick:"var child = this.children[0]; child.setAttribute('show',child.getAttribute('show') != 'true');"
+        })
+        var card = append(cardlist,"card","",{});
         
         var header = append(card,"header","",{});
         append(header,"a",json[i].name,{
@@ -36,19 +40,18 @@ async function run() {
         var inner  = append(card,"inner" ,"",{});
         append(inner,"img","",{
             src:"https://raw.githubusercontent.com/" + json[i].full_name + "/" + json[i].default_branch + "/Preview.png",
-            alt:"github-logo.png"
+            onerror:"setAltImg(this);",
+            draggable:"false"
         });
         
-        var footer = append(card,"footer","",{});
-        append(footer,"input","",{
-            type:"button",
-            value:"v",
-            onclick:"var parent = this.parentNode.parentNode; parent.setAttribute('show',parent.getAttribute('show') != 'true'); this.value = ((this.value == 'v') ? '^' : 'v');",
-        });
-        append(footer,"hide",json[i].description,{});
+        var footer = append(card,"footer","\"" + json[i].description + "\"",{});
     }
 }
 run();
+function setAltImg(element) {
+    element.src = "/github-logo.png"
+    element.setAttribute("alt",true);
+}
 //#endregion
 
 //#region letter animation
