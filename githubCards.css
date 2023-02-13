@@ -20,6 +20,7 @@ cardParent {
 
 .gitCard > inner {
     background-color: var(--bs-secondary-bg); width:100%;
+    display:flex; justify-content: center;
 }
 .gitCard > inner > img {
     width:23em;
