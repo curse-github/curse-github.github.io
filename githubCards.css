@@ -5,6 +5,7 @@
 .cardParent {
     width:25em;
     margin:0.75em;
+    cursor:pointer;
     
     display:flex; flex-direction: column; align-items:center;/* center content */
 }
