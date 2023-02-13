@@ -2,72 +2,65 @@
     display: flex; flex-flow:row wrap;
     margin:0.75em;
 }
-.cardParent {
+cardParent {
     width:25em;
     margin:0.75em;
-    cursor:pointer;
-    
     display:flex; flex-direction: column; align-items:center;/* center content */
 }
 
-card {
+.gitCard {
     background-color:var(--bs-dark-border-subtle);
     border-radius: 2em;
     width:100%;
-    display:flex; flex-direction: column; align-items:center;
+    cursor:pointer;
+    display:flex; flex-direction: column; align-items:center;/* center content */
 }
 
-card > header { margin-top:0.25em; font-size:1.75em; }
+.gitCard > header { margin-top:0.25em; font-size:1.75em; }
 
-card > inner {
+.gitCard > inner {
     background-color: var(--bs-secondary-bg); width:100%;
 }
-card > inner > img {
+.gitCard > inner > img {
     width:23em;
     margin:1em;
     aspect-ratio: 16/9;
     
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    user-select: none; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;/* keep user from selecting image */
 }
-card > inner > img[alt="true"] { width:12.9em; aspect-ratio: 1; }
+.gitCard > inner > img[alt="true"] { width:12.9em; aspect-ratio: 1; }
 
-card > footer {
+.gitCard > footer {
     width:90%;
     margin-top:0.25em; margin-bottom:2.75em;
     max-height:0px;
     overflow: hidden;
 
     font-size:1.125em;
-    display: flex;
-    flex-direction:column;
+    display: flex; flex-direction:column;
 }
-card[show="true"] > footer { max-height:1000px; margin-bottom:1.75em; }
+.gitCard[show="true"] > footer { max-height:1000px; margin-bottom:1.75em; }
 
 
-card > footer > a.link-homepage {
+.gitCard > footer > a.link-homepage {
     color:#58a6ff; text-decoration: none;
     width:100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    display:flex; justify-content: center; align-items: center;
 }
-card > footer > a.link-homepage:hover { color:#58a6ff; text-decoration:underline; }
-card > footer > a > img.link-homepage {
+.gitCard > footer > a.link-homepage:hover { color:#58a6ff; text-decoration:underline; }
+.gitCard > footer > a > img.link-homepage {
     width:1em;
     height:1em;
     filter:invert();
 }
 
 
-@media screen and (max-width: 55.5em) {
-    .cardParent {
+@media screen and (max-width: 55.5em) {/* for smaller screen */
+    cardParent {
         width:calc(100vw - 4em);
         margin:0.75em;
     }
-    card {
+    .gitCard {
         width:100%;
         margin:0;
     }
@@ -76,10 +69,10 @@ card > footer > a > img.link-homepage {
         margin-bottom:0.75em;
         justify-content: center;
     }
-    card > inner > img {
+    .gitCard > inner > img {
         width:calc(100% - 2em);
     }
-    card > inner > img[alt="true"] {
+    .gitCard > inner > img[alt="true"] {
         width:calc(calc(100% - 2em) * 0.55);
     }
 }

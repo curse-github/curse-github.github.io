@@ -24,11 +24,11 @@ function append(parent,type,content,attributes) {
 async function run() {
     var json = await fetchJsonPromise("https://api.github.com/users/curse-github/repos");
     for(var i = 0; i < json.length; i++) {
-        var cardlist = append(document.getElementById("cardList"),"div","",{
-            class:"cardParent",
-            onclick:"var child = this.children[0]; child.setAttribute('show',child.getAttribute('show') != 'true');"
-        })
-        var card = append(cardlist,"card","",{});
+        var cardParent = append(document.getElementById("cardList"),"cardParent","",{})
+        var card = append(cardParent,"div","",{
+            class:"gitCard",
+            onclick:"this.setAttribute('show',this.getAttribute('show') != 'true');"
+        });
         
         var header = append(card,"header","",{});
         append(header,"a",json[i].name.split("-").join(" ").replace("curse github","curse-github"),{
