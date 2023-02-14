@@ -33,7 +33,7 @@ cardParent {
     width:12.9em; aspect-ratio: 1;
     filter:invert();
 }
-.gitCard > inner > img[alt="pfPic"] {width:12.9em; aspect-ratio: 1; }
+.gitCard > inner > img[alt="pfPic"] { width:13.9em; aspect-ratio: 1; border-radius:50%; margin:0.5em }
 
 .gitCard > footer {
     width:90%;
