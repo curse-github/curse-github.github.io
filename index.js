@@ -57,7 +57,7 @@ function appendGitCard(json) {
             src:"link.png", draggable:"false"
         }); link.innerHTML += hpLink.replace("https://","");
     }
-    append(footer,"div",((json.description != null && json.description != "") ? "\"" + json.description + "\"" : ""),{});
+    if ((json.description != null && json.description != "")) { append(footer,"div","\"" + json.description + "\"",{}); }
     return [header,inner,footer];
 }
 function appendUserCard(json) {
@@ -83,7 +83,7 @@ function appendUserCard(json) {
         }); link.innerHTML += json.blog.replace("https://","");
     }
     //<a href = "mailto: abc@example.com">Send Email</a>
-    append(footer,"div",((json.bio != null && json.bio != "") ? "\"" + json.bio + "\"" : ""),{});
+    if ((json.bio != null && json.bio != "")) { append(footer,"div",json.bio,{}); }
     return [header,inner,footer];
 }
 async function run() {
