@@ -53,7 +53,6 @@ function appendGitCard(json) {
             class:"link-homepage",
             href:hpLink, target: "_blank"
         }); append(link,"img","",{
-            class:"link-homepage",
             src:"link.png", draggable:"false"
         }); link.innerHTML += hpLink.replace("https://","");
     }
@@ -78,7 +77,6 @@ function appendUserCard(json) {
             class:"link-homepage",
             href:hpLink, target: "_blank"
         }); append(link,"img","",{
-            class:"link-homepage",
             src:"link.png", draggable:"false"
         }); link.innerHTML += json.blog.replace("https://","");
     }
@@ -86,9 +84,30 @@ function appendUserCard(json) {
     if ((json.bio != null && json.bio != "")) { append(footer,"div",json.bio,{}); }
     return [header,inner,footer];
 }
+function createUser(json) {
+    append(document.querySelector(".profile > .pfPic"),"img","",{
+        src: json.avatar_url, draggable: "false",
+        onerror: "setAltImg(this);"
+    });
+    var hpLink = json.homepage;
+    if (json.blog != null && json.blog != "") {
+        var link = append(document.querySelector(".profile > div > .links"),"a","",{
+            href:hpLink, target: "_blank"
+        }); append(link,"img","",{
+            src:"link.png", draggable:"false"
+        }); link.innerHTML += json.blog.replace("https://","");
+    }
+    if ((json.bio != null && json.bio != "")) { append(document.querySelector(".profile > div > .bio"),"div",json.bio,{}); }
+}
 async function run() {
-    cardList = await document.querySelector("#cardList");
-    appendUserCard(await fetchJsonPromise("https://api.github.com/users/" + USER));
+    observer.observe(document.querySelector("navbar"));// navbar animation
+    
+    var UsrJson = await fetchJsonPromise("https://api.github.com/users/" + USER);
+    createUser(UsrJson)
+    //appendUserCard(UsrJson);;
+    
+
+    cardList = document.querySelector("#cardList");// repository cards
     json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
     for(var i = 0; i < json.length; i++) {
         appendGitCard(json[i]);
@@ -110,5 +129,4 @@ const observer = new IntersectionObserver(entries => {
 //#endregion
 window.onload = () => {
     run();
-    observer.observe(document.querySelector("navbar"));
 }

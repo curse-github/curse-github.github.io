@@ -1,3 +1,38 @@
+.profile {
+    display: flex; flex-direction: row;
+}
+.profile > .pfPic {
+    width:13.9em; aspect-ratio: 1; margin:0.5em 
+}
+.profile > .pfPic > img{
+    width:100%; aspect-ratio: 1; border-radius:50%;
+}
+.profile > .column { width:100%; display: flex; flex-direction: column; }
+.profile > .column > .links {
+    width:100%; margin:1em;
+}
+.profile > .column > .links > a {
+    font-size: 1.25em;
+}
+.profile > .column > .links > a > img { width:1em; height:1em; filter:invert(); }
+.profile > .column > .bio {
+    width:100%; margin-left:1em; font-size: 1.5em;
+}
+.barVertParent { display:flex;flex-direction:row;align-items: center; }/* center it */
+.barVert {
+    display: block;
+    width:0.125em; height:calc(100% - 1em);
+    background-color: var(--bs-dark-border-subtle);
+}
+.barHoriParent { display:flex;flex-direction:column;align-items: center; }/* center it */
+.barHori {
+    display: block;
+    width:calc(100% - 1em); height:0.125em;
+    background-color: var(--bs-dark-border-subtle);
+}
+
+
+
 #cardList {
     display: flex; flex-flow:row wrap;
     margin:0.75em;
