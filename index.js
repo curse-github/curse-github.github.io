@@ -80,7 +80,7 @@ function appendUserCard(json) {
             src:"link.png", draggable:"false"
         }); link.innerHTML += json.blog.replace("https://","");
     }
-    //<a href = "mailto: abc@example.com">Send Email</a>
+    //<a href = "mailto: abc@example.com">Send Email</a>// doesnt work, dont have acces to emails from non authenticated api
     if ((json.bio != null && json.bio != "")) { append(footer,"div",json.bio,{}); }
     return [header,inner,footer];
 }
@@ -89,7 +89,7 @@ function createUser(json) {
         src: json.avatar_url, draggable: "false",
         onerror: "setAltImg(this);"
     });
-    var hpLink = json.homepage;
+    var hpLink = json.blog;
     if (json.blog != null && json.blog != "") {
         var link = append(document.querySelector(".profile > div > .links"),"a","",{
             href:hpLink, target: "_blank"
