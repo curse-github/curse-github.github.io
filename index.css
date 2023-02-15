@@ -16,6 +16,10 @@ navbar {
     height:calc(3em * 3.5em);
     color:white;
 }
+a { color:#58a6ff !important;
+    text-decoration: none !important;}
+a:hover { color:#58a6ff !important;
+    text-decoration:underline !important; }
 /*
 navbar > right {
     display:flex;
