@@ -16,7 +16,7 @@
 }
 .profile > .column > .links > a > img { width:1em; height:1em; filter:invert(); }
 .profile > .column > .bio {
-    width:100%; margin-left:1em; font-size: 1.5em;
+    width:100%; margin-left:1em; margin-right:1em; font-size: 1.5em;
 }
 .barVertParent { display:flex;flex-direction:row;align-items: center; }/* center it */
 .barVert {
