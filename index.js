@@ -1,7 +1,7 @@
 function fetchJson(url, callback) {
     fetch(url, {
         headers: {
-            Authorization: "Bearer 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"
+            //Authorization: "Bearer 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"
         }
     })
     .then((response) => response.json())
