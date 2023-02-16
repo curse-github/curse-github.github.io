@@ -102,7 +102,7 @@ async function run() {
     bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
     bio.innerHTML += thing(entries[0]) + ", ";
     bio.innerHTML += thing(entries[1]) + ", and ";
-    bio.innerHTML += thing(entries[2]) + ", ";
+    bio.innerHTML += thing(entries[2]);
     entries.forEach((entry)=>{ console.log(entry[0] + ": " + Math.round(entry[1]/json.length*100) + "%"); });
 }
 function setAltImg(element) {
