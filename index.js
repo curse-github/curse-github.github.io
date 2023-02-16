@@ -1,5 +1,9 @@
 function fetchJson(url, callback) {
-    fetch(url)
+    fetch(url, {
+        headers: {
+            Authorization: "Bearer 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"
+        }
+    })
     .then((response) => response.json())
     .then(callback);
 }
@@ -57,6 +61,7 @@ function appendGitCard(json) {
     return [header,inner,footer];
 }
 function createUser(json) {
+    console.log(json);
     let link1 =  append(document.querySelector(".profile > .pfPic"),"a","",{
         href: json.html_url, target: "_blank"
     });
