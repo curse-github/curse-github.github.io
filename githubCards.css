@@ -19,11 +19,11 @@
 .profile > .column > .links > a > img { width:1em; height:1em; filter:invert(); }
 .barHoriParent {
     display:flex; flex-direction:column; align-items: center;/* center it */
-    width:calc(100% - 1em); margin:0 !important;
+    width:100%; margin:0 !important;
 }
 .barHori {
     display: block;
-    width:100%; height:2px;
+    width:calc(100% - 1em); height:2px;
     background-color: var(--bs-dark-border-subtle);
 }
 
@@ -80,6 +80,21 @@ gitCard > footer > a.link-homepage > img { width:1em; height:1em; filter:invert(
 gitCard > footer > div { width: 100%; }/* card description */
 
 @media screen and (max-width: 55.5em) {/* for smaller screen */
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile > .column > .links {
+        display: flex; flex-direction: column; align-items: center;/* center content */
+    }
+    .profile > .column > .bio {
+        font-size: 1.35em;
+    }
+    #cardList {
+        margin-top:0.75em;
+        margin-bottom:0.75em;
+        justify-content: center;
+    }
     cardParent {
         width:calc(100vw - 4em);
         margin:0.75em;
@@ -87,11 +102,6 @@ gitCard > footer > div { width: 100%; }/* card description */
     gitCard {
         width:100%;
         margin:0;
-    }
-    #cardList {
-        margin-top:0.75em;
-        margin-bottom:0.75em;
-        justify-content: center;
     }
     gitCard > inner > img {
         width:calc(100% - 2em);
