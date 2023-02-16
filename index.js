@@ -86,28 +86,21 @@ async function run() {
 
     cardList = document.querySelector("#cardList");// repository cards
     let json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
-    for(var i = 0; i < json.length; i++) {
-        appendGitCard(json[i]);
-    }
-
     var languages = {};
     for(var i = 0; i < json.length; i++) {
-        let entries = Object.entries(await fetchJsonPromise(json[i].languages_url));
-        for(var j = 0; j < entries.length; j++) {
-            [key,value] = entries[j];
-            key = key.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
-            if (languages[key] != null)               { languages[key] += value; }
-            else if (!["ShaderLab","HLSL","GLSL","Batchfile","Shell","CMake"].includes(key)) { languages[key]  = value; }
-        }
+        appendGitCard(json[i]);
+        var lang = json[i].language;
+        lang = lang.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
+        if (languages[lang] != null) { languages[lang]++; }
+        else                         { languages[lang]=1; }
     }
     let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
-    let thing = (entry)=>{ return entry[1] + " bytes of " + entry[0] + " code"; };
     let bio = document.querySelector(".profile > div > .bio > div");
-    bio.innerHTML += "<br>In my "  + json.length  + " repositories I have coded ";
-    bio.innerHTML += thing(entries[0]) + ", ";
-    bio.innerHTML += thing(entries[1]) + ", and ";
-    bio.innerHTML += thing(entries[2]) + ".";
-    entries.forEach((entry)=>{ console.log(thing(entry)); });
+    bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
+    bio.innerHTML += entries[0][1] + " of which are " + entries[0][0] + ", ";
+    bio.innerHTML += entries[1][1] + " of which are " + entries[1][0] + ", and ";
+    bio.innerHTML += entries[2][1] + " of which are " + entries[2][0] + ", ";
+    entries.forEach((entry)=>{ console.log(entry[0] + ": " + (entry[1]/json.length*100) + "%"); });
 }
 function setAltImg(element) {
     element.src = "/github-logo.png"
@@ -118,8 +111,7 @@ function setAltImg(element) {
 //#region letter animation
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) { document.querySelector("letterContainer").setAttribute("animate",true ); }
-        else {                      document.querySelector("letterContainer").setAttribute("animate",false); }
+        document.querySelector("letterContainer").setAttribute("animate",entry.isIntersecting);
     });
 });
 //#endregion
