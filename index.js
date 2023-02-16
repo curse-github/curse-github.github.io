@@ -61,7 +61,6 @@ function appendGitCard(json) {
     return [header,inner,footer];
 }
 function createUser(json) {
-    console.log(json);
     let link1 =  append(document.querySelector(".profile > .pfPic"),"a","",{
         href: json.html_url, target: "_blank"
     });
@@ -94,17 +93,17 @@ async function run() {
         if (languages[lang] != null) { languages[lang]++; }
         else                         { languages[lang]=1; }
     }
+    var thing = (entry) => {
+        if (entry[1] > 1) { return entry[1] + " of which are " + entry[0]; }
+        else { return entry[1] + " is " + entry[0]; }
+    };
     let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
     let bio = document.querySelector(".profile > div > .bio > div");
     bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
-    var thing = (entry) => {
-        if (entries[0][1] > 1) { return entries[0][1] + " of which are " + entries[0][0]; }
-        else { return entries[0][1] + " is " + entries[0][0]; }
-    };
-    bio.innerHTML += entries[0][1] + " of which are " + entries[0][0] + ", ";
-    bio.innerHTML += entries[1][1] + " of which are " + entries[1][0] + ", and ";
-    bio.innerHTML += entries[2][1] + " of which are " + entries[2][0] + ", ";
-    entries.forEach((entry)=>{ console.log(entry[0] + ": " + round(entry[1]/json.length*100) + "%"); });
+    bio.innerHTML += thing(entries[0]) + ", ";
+    bio.innerHTML += thing(entries[1]) + ", and ";
+    bio.innerHTML += thing(entries[2]) + ", ";
+    entries.forEach((entry)=>{ console.log(entry[0] + ": " + Math.round(entry[1]/json.length*100) + "%"); });
 }
 function setAltImg(element) {
     element.src = "/github-logo.png"
