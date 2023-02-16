@@ -92,7 +92,7 @@ async function run() {
             [key,value] = entries[j];
             key = key.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
             if (languages[key] != null)               { languages[key] += value; }
-            else if (!["ShaderLab","HLSL","Batchfile","Shell","CMake"].includes(key)) { languages[key]  = value; }
+            else if (!["ShaderLab","HLSL","GLSL","Batchfile","Shell","CMake"].includes(key)) { languages[key]  = value; }
         }
     }
     let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
