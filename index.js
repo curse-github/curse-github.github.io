@@ -97,10 +97,14 @@ async function run() {
     let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
     let bio = document.querySelector(".profile > div > .bio > div");
     bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
+    var thing = (entry) => {
+        if (entries[0][1] > 1) { return entries[0][1] + " of which are " + entries[0][0]; }
+        else { return entries[0][1] + " is " + entries[0][0]; }
+    };
     bio.innerHTML += entries[0][1] + " of which are " + entries[0][0] + ", ";
     bio.innerHTML += entries[1][1] + " of which are " + entries[1][0] + ", and ";
     bio.innerHTML += entries[2][1] + " of which are " + entries[2][0] + ", ";
-    entries.forEach((entry)=>{ console.log(entry[0] + ": " + (entry[1]/json.length*100) + "%"); });
+    entries.forEach((entry)=>{ console.log(entry[0] + ": " + round(entry[1]/json.length*100) + "%"); });
 }
 function setAltImg(element) {
     element.src = "/github-logo.png"
