@@ -19,9 +19,9 @@
 .profile > .column > .links > a > img { width:1em; height:1em; filter:invert(); }
 .barHoriParent {
     display:flex; flex-direction:column; align-items: center;/* center it */
-    width:100%; margin:0 !important;
+    width:100% !important; margin:0 !important;
 }
-.barHori {
+.barHoriParent > .barHori {
     display: block;
     width:calc(100% - 1em); height:2px;
     background-color: var(--bs-dark-border-subtle);
