@@ -88,24 +88,28 @@ async function run() {
     var languages = {};
     for(var i = 0; i < json.length; i++) {
         appendGitCard(json[i]);
+        var lang = json[i].language;
         if (lang != null && lang != undefined) {
-            var lang = json[i].language;
             lang = lang.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
             if (languages[lang] != null) { languages[lang]++; }
             else                         { languages[lang]=1; }
         }
     }
-    var thing = (entry) => {
-        if (entry[1] > 1) { return entry[1] + " of which are " + entry[0]; }
-        else { return entry[1] + " is " + entry[0]; }
-    };
-    let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
-    let bio = document.querySelector(".profile > div > .bio > div");
-    bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
-    bio.innerHTML += thing(entries[0]) + ", ";
-    bio.innerHTML += thing(entries[1]) + ", and ";
-    bio.innerHTML += thing(entries[2]);
-    entries.forEach((entry)=>{ console.log(entry[0] + ": " + Math.round(entry[1]/json.length*100) + "%"); });
+    if (languages != null && languages != undefined) {
+        let entries = Object.entries(languages).sort((a,b)=>{ return b[1]-a[1]; });
+        if (entries.length > 0) {
+            var thing = (entry) => {
+                if (entry[1] > 1) { return entry[1] + " of which are " + entry[0]; }
+                else { return entry[1] + " is " + entry[0]; }
+            };
+            let bio = document.querySelector(".profile > div > .bio > div");
+            bio.innerHTML += "<br>I have "  + json.length  + " public repositories. ";
+            bio.innerHTML += thing(entries[0]) + ", ";
+            bio.innerHTML += thing(entries[1]) + ", and ";
+            bio.innerHTML += thing(entries[2]);
+            entries.forEach((entry)=>{ console.log(entry[0] + ": " + Math.round(entry[1]/json.length*100) + "%"); });
+        }
+    }
 }
 function setAltImg(element) {
     element.src = "/github-logo.png"
