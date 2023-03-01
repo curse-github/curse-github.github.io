@@ -88,10 +88,12 @@ async function run() {
     var languages = {};
     for(var i = 0; i < json.length; i++) {
         appendGitCard(json[i]);
-        var lang = json[i].language;
-        lang = lang.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
-        if (languages[lang] != null) { languages[lang]++; }
-        else                         { languages[lang]=1; }
+        if (lang != null && lang != undefined) {
+            var lang = json[i].language;
+            lang = lang.replace("Objective-C++","C++").replace("TypeScript","JavaScript");
+            if (languages[lang] != null) { languages[lang]++; }
+            else                         { languages[lang]=1; }
+        }
     }
     var thing = (entry) => {
         if (entry[1] > 1) { return entry[1] + " of which are " + entry[0]; }
