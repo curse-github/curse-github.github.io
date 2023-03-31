@@ -38,7 +38,7 @@ function appendCard(parent) {
 }
 function appendGitCard(json) {
     [header,inner,footer] = appendCard(cardList);
-    let name = json.name.split("-").join(" ").replace("curse github","curse-github")
+    let name = json.name.split("-").join(" ").replace("curse github","curse-github").replace("nekro github","nekro-github")
     append(header,"a",name,{
         href: json.html_url, target: "_blank"
     });
@@ -85,6 +85,13 @@ async function run() {
 
     cardList = document.querySelector("#cardList");// repository cards
     let json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
+    const adds = ["nekro-github/Syzygy"];
+    await new Promise((resolve)=>{adds.forEach(async function(add) {
+        let repo = await fetchJsonPromise("https://api.github.com/repos/"+add);
+        repo.name = repo.full_name; json.push(repo); resolve();
+    })
+});
+    
     var languages = {};
     for(var i = 0; i < json.length; i++) {
         appendGitCard(json[i]);
