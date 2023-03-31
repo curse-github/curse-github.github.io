@@ -27,6 +27,7 @@ function append(parent,type,content,attributes) {
 
 //#region github cards
 const USER = "curse-github";
+const adds = ["nekro-github/Syzygy"];
 var cardList = null;
 
 function appendCard(parent) {
@@ -85,7 +86,7 @@ async function run() {
 
     cardList = document.querySelector("#cardList");// repository cards
     let json = await fetchJsonPromise("https://api.github.com/users/" + USER + "/repos");
-    const adds = ["nekro-github/Syzygy"];
+    
     await new Promise((resolve)=>{adds.forEach(async function(add) {
         let repo = await fetchJsonPromise("https://api.github.com/repos/"+add);
         repo.name = repo.full_name; json.push(repo); resolve();
