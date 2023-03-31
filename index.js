@@ -71,7 +71,7 @@ function createUser(json) {
     let hpLink = json.blog;
     if (json.blog != null && json.blog != "") {
         let link = append(document.querySelector(".profile > div > .links"),"a","",{
-            href:hpLink, target: "_blank"
+            href:"https://"+hpLink, target: "_blank"
         }); append(link,"img","",{
             src:"link.png", draggable:"false"
         }); link.innerHTML += json.blog.replace("https://","");
