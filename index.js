@@ -56,7 +56,7 @@ function appendGitCard(json) {
             href:hpLink, target: "_blank"
         }); append(link,"img","",{
             src:"link.png", draggable:"false"
-        }); link.innerHTML += hpLink.replace("https://","");
+        }); link.innerHTML += hpLink.replace("https://","").replace("http://","").replace("/index.html","").replace("/index.php","");
     }
     if ((json.description != null && json.description != "")) { append(footer,"div","\"" + json.description + "\"",{}); }
     return [header,inner,footer];
@@ -75,7 +75,7 @@ function createUser(json) {
             href:"https://"+hpLink, target: "_blank"
         }); append(link,"img","",{
             src:"link.png", draggable:"false"
-        }); link.innerHTML += json.blog.replace("https://","");
+        }); link.innerHTML += json.blog.replace("https://","").replace("http://","").replace("/index.html","").replace("/index.php","");
     }
     if ((json.bio != null && json.bio != "")) { append(document.querySelector(".profile > div > .bio"),"div",json.bio,{}); }
 }
